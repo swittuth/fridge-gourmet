@@ -1,0 +1,28 @@
+{
+  "name": "fridge-gourmet",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "nodemon server/server.js & vite dev",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "passport": "^0.5.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.0",
+    "cookie-session": "^2.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "passport-google-oauth2": "^0.2.0",
+    "pg": "^8.7.3",
+    "vite": "^3.0.0"
+  }
+}
