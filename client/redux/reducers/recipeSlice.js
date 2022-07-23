@@ -4,6 +4,7 @@ const initialState = {
   meals: [],
   status: "idle",
   error: null,
+  // initial default screen
   selectedIngredients: ["Breadcrumbs"],
   url: "http://localhost:3001/get-meals?ingred=Breadcrumbs",
 };

@@ -38,7 +38,14 @@ function App() {
             setOpenDrawer={setOpenDrawer}
           ></NavBar>
         </Grid>
-        <Grid item sx={{ gridArea: "MainContainer" }}>
+        <Grid
+          item
+          sx={{
+            gridArea: "MainContainer",
+            width: "100%",
+            height: "100%",
+          }}
+        >
           <MainDisplay></MainDisplay>
         </Grid>
         <Grid item sx={{ gridArea: "Footer" }}>
