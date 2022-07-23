@@ -11,11 +11,17 @@ import {
 } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-export function NavBar() {
+export function NavBar(prop) {
   return (
     <AppBar>
       <Toolbar>
-        <img src={logo} width="80px" />
+        <IconButton
+          onClick={() => {
+            prop.setOpenDrawer(true);
+          }}
+        >
+          <img src={logo} width="80px" />
+        </IconButton>
         <Stack
           direction="row"
           sx={{

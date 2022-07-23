@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { Grid } from "@mui/material";
+import { Grid, Drawer, Typography } from "@mui/material";
 import { BrowserRouter, Router, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar.jsx";
 import { Footer } from "./components/Footer.jsx";
+import { MainDisplay } from "./components/MainDisplay.jsx";
+import { SideSelection } from "./components/SideSelection.jsx";
 import "./App.scss";
 
 function App() {
+  const [openDrawer, setOpenDrawer] = useState(true);
   const gridOuterContainer = {
     display: "grid",
     gridTemplateColumns: "1fr",
@@ -22,16 +25,27 @@ function App() {
     `,
   };
   return (
-    <Grid container sx={gridOuterContainer}>
-      {/* main section */}
-      <Grid item sx={{ gridArea: "Header" }}>
-        <NavBar></NavBar>
+    <>
+      <SideSelection
+        openDrawer={openDrawer}
+        setOpenDrawer={setOpenDrawer}
+      ></SideSelection>
+      <Grid container sx={gridOuterContainer}>
+        {/* main section */}
+        <Grid item sx={{ gridArea: "Header" }}>
+          <NavBar
+            openDrawer={openDrawer}
+            setOpenDrawer={setOpenDrawer}
+          ></NavBar>
+        </Grid>
+        <Grid item sx={{ gridArea: "MainContainer" }}>
+          <MainDisplay></MainDisplay>
+        </Grid>
+        <Grid item sx={{ gridArea: "Footer" }}>
+          <Footer></Footer>
+        </Grid>
       </Grid>
-      <Grid item sx={{ gridArea: "MainContainer" }}></Grid>
-      <Grid item sx={{ gridArea: "Footer" }}>
-        <Footer></Footer>
-      </Grid>
-    </Grid>
+    </>
   );
 }
 
