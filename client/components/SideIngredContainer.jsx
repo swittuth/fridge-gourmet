@@ -6,15 +6,21 @@ import {
   Typography,
   Button,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { addSearchIngredient } from "../redux/reducers/recipeSlice";
 
 export function SideIngredContainer(props) {
   const ingredientList = props.ingredientList;
+  const dispatch = useDispatch();
   const buttonList = [];
   for (let ingredient of ingredientList) {
     buttonList.push(
       <Button
         sx={{
           color: "secondary.dark",
+        }}
+        onClick={() => {
+          dispatch(addSearchIngredient(ingredient.name));
         }}
       >
         {ingredient.name}

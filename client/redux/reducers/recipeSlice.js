@@ -20,7 +20,7 @@ const recipeSlice = createSlice({
       state.status = "idle";
     },
     addSearchIngredient(state, action) {
-      let currentIngredients = current(state).selectedIngredients;
+      let currentIngredients = state.selectedIngredients;
       if (!currentIngredients.includes(action.payload)) {
         state.selectedIngredients.push(action.payload);
         state.url += `&ingred=${action.payload}`;
@@ -29,7 +29,7 @@ const recipeSlice = createSlice({
       // need to set status back to idle to generate a fetch for meal based on ingredients
     },
     removeSearchIngredient(state, action) {
-      let currentIngredients = current(state).selectedIngredients.filter(
+      let currentIngredients = state.selectedIngredients.filter(
         (ing) => ing !== action.payload
       );
       state.selectedIngredients = currentIngredients;
@@ -42,48 +42,48 @@ const recipeSlice = createSlice({
       }
       state.status = "idle";
     },
-    extraReducers(builder) {
-      builder
-        .addCase(getMeals.pending, (state, action) => {
-          state.status = "loading";
-        })
-        .addCase(getMeals.fulfilled, (state, action) => {
-          state.status = "succeeded";
-          const mealsData = action.payload; // array of meals
-          const meals = [];
-          for (let meal of mealsData) {
-            /*
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(getMeals.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(getMeals.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        const mealsData = action.payload; // array of meals
+        const meals = [];
+        for (let meal of mealsData) {
+          /*
           meals: {
             id -> meal
           }
           */
-            const {
-              id,
-              name,
-              category,
-              area,
-              image,
-              youtube,
-              source,
-              instructions,
-              ingredients,
-            } = meal;
-            meals.push({
-              // id: add this asap!
-              id,
-              name,
-              category,
-              area,
-              image,
-              youtube,
-              source,
-              instructions,
-              ingredients,
-            });
-          }
-          state.meals = meals;
-        });
-    },
+          const {
+            id,
+            name,
+            category,
+            area,
+            image,
+            youtube,
+            source,
+            instructions,
+            ingredients,
+          } = meal;
+          meals.push({
+            // id: add this asap!
+            id,
+            name,
+            category,
+            area,
+            image,
+            youtube,
+            source,
+            instructions,
+            ingredients,
+          });
+        }
+        state.meals = meals;
+      });
   },
 });
 

@@ -8,16 +8,15 @@ import { SideSelection } from "./components/SideSelection.jsx";
 import "./App.scss";
 
 function App() {
-  const [openDrawer, setOpenDrawer] = useState(true);
+  const [openDrawer, setOpenDrawer] = useState(false);
   const gridOuterContainer = {
     display: "grid",
     gridTemplateColumns: "1fr",
     gridTemplateRows: "100px 1fr 30px",
     margin: "0px",
     padding: "0px",
-    height: "100vh",
-    width: "100vw",
-    border: 1,
+    height: "100%",
+    width: "100%",
     gridTemplateAreas: `
     "Header"
     "MainContainer"
