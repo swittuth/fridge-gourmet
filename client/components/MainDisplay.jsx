@@ -49,6 +49,7 @@ export function MainDisplay() {
           gridArea: "Ingredients",
           display: "flex",
           alignItems: "center",
+          width: "100%",
           padding: "10px",
           gap: "5px",
         }}

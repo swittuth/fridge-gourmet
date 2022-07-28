@@ -7,3 +7,30 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
+.video-modal-container {
+  display: "flex";
+  flex-direction: "row";
+  justify-content: "center";
+  align-items: "center";
+  height: 99.7%;
+  width: 70%;
+}
+
+.video-recipe {
+  height: 100%;
+  width: 100%;
+}
+
+.link-source-typography,
+.link-source-typography:focus {
+  font-family: Quicksand;
+  font-size: 0.7em;
+  color: #2e89ac;
+  text-decoration: none;
+  transition-duration: 0.8s;
+}
+
+.link-source-typography:hover {
+  color: #ac972e;
+}

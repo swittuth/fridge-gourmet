@@ -12,7 +12,8 @@ import {
   TableBody,
 } from "@mui/material";
 import { useSelector } from "react-redux";
-import Carousel from "react-material-ui-carousel";
+import AwesomeSlider from "react-awesome-slider";
+import "react-awesome-slider/dist/styles.css";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 export function ModalRecipeDisplay(props) {
@@ -46,12 +47,15 @@ export function ModalRecipeDisplay(props) {
         elevation={24}
         sx={{
           width: "80%",
-          height: "100%",
+          height: "90%",
           backgroundColor: "white",
           borderRadius: "20px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          overflowY: "auto",
+          overflowX: "hidden",
+          gap: "10px",
         }}
       >
         <Box
@@ -76,47 +80,97 @@ export function ModalRecipeDisplay(props) {
         <Typography
           fontWeight={600}
           sx={{
-            fontSize: "1.5em",
+            fontSize: "2em",
             paddingTop: "20px",
+            color: "primary.dark",
           }}
         >
-          {info.name.toUpperCase()}
+          {info.name.toUpperCase()} |{" "}
+          <a
+            className="link-source-typography"
+            href={info.source}
+            target="_blank"
+          >
+            Source Link
+          </a>
         </Typography>
-        <Carousel
+        <Box
           sx={{
-            width: "600px",
-            height: "1800px",
-            textAlign: "center",
-            padding: "20px",
-          }}
-        >
-          <img src={info.image} width="500px" height="500px" />
-          <iframe
-            height="500px"
-            width="500px"
-            src={info.youtube.replace("watch?v=", "embed/")}
-          ></iframe>
-        </Carousel>
-        <TableContainer
-          component={Paper}
-          sx={{
+            height: "100%",
             width: "70%",
           }}
         >
-          <Table
+          <AwesomeSlider animation="foldOutAnimation" bullets={false}>
+            <Box>
+              <img src={info.image} />
+            </Box>
+            <div className="video-modal-container">
+              <iframe
+                className="video-recipe"
+                src={info.youtube.replace("watch?v=", "embed/")}
+              ></iframe>
+            </div>
+          </AwesomeSlider>
+        </Box>
+
+        <Table
+          sx={{
+            width: "70%",
+            height: "100%",
+          }}
+        >
+          <TableHead>
+            <TableRow>
+              <TableCell
+                align="center"
+                sx={{
+                  fontWeight: 600,
+                  fontSize: "1.2em",
+                  color: "secondary.dark",
+                }}
+              >
+                INGREDIENTS
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  fontWeight: 600,
+                  fontSize: "1.2em",
+                  color: "secondary.dark",
+                }}
+              >
+                MEASUREMENTS
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>{rowArray}</TableBody>
+        </Table>
+
+        <Box
+          sx={{
+            height: "max-content",
+            width: "70%",
+            marginBottom: "20px",
+          }}
+        >
+          <Typography
             sx={{
-              height: "100%",
+              fontWeight: 600,
+              textAlign: "center",
+              fontSize: "1.3em",
+              color: "secondary.dark",
             }}
           >
-            <TableHead>
-              <TableRow>
-                <TableCell align="center">INGREDIENTS</TableCell>
-                <TableCell align="center">MEASUREMENTS</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>{rowArray}</TableBody>
-          </Table>
-        </TableContainer>
+            INSTRUCTIONS
+          </Typography>
+          <Typography
+            sx={{
+              textAlign: "justify",
+            }}
+          >
+            {info.instructions}
+          </Typography>
+        </Box>
       </Paper>
     </Modal>
   );
