@@ -10,6 +10,9 @@ export function MainDisplay() {
   const [chipIngredients, setChipIngredients] = useState([]);
   const dispatch = useDispatch();
 
+  // get information about the user
+  const user = useSelector((state) => state.user);
+
   const mainDisplayStyle = {
     display: "grid",
     height: "100%",
@@ -25,6 +28,7 @@ export function MainDisplay() {
     dispatch(removeSearchIngredient(name));
   }
 
+  // to update chips for selected ingredients
   useEffect(() => {
     const tempChipArray = [];
     for (let ingred of selectedIngredients) {
@@ -40,6 +44,8 @@ export function MainDisplay() {
     }
     setChipIngredients(tempChipArray);
   }, [selectedIngredients]);
+
+  // to update the user information
 
   return (
     <Grid container sx={mainDisplayStyle}>

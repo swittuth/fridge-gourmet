@@ -10,12 +10,12 @@ authRouter.get("/logout", (req, res) => {
 authRouter.get("/profile", (req, res) => {
   if (req.user) {
     res.send({
-      redirectLink: "http://localhost:3000/profile",
+      redirectLink: "http://127.0.0.1:5173/",
       user: req.user,
     });
   } else {
     res.send({
-      redirectLink: "http://localhost:3000/login",
+      redirectLink: "http://127.0.0.1:5173/",
       user: null,
     });
   }
@@ -34,7 +34,7 @@ authRouter.get(
   (req, res) => {
     // in this step google send back the info with a code that can then be used
     // by the application to pull data from the user on google
-    res.redirect("http://localhost:3000/"); // go back to the home page
+    res.redirect("http://127.0.0.1:5173"); // go back to the home page
   }
 );
 module.exports = authRouter;

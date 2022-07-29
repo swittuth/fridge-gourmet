@@ -5,10 +5,13 @@ import { NavBar } from "./components/NavBar.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { MainDisplay } from "./components/MainDisplay.jsx";
 import { SideSelection } from "./components/SideSelection.jsx";
+import { UserModalLogin } from "./components/UserModalLogin.jsx";
 import "./App.scss";
 
 function App() {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [loginMode, setLoginMode] = useState(false);
+
   const gridOuterContainer = {
     display: "grid",
     gridTemplateColumns: "1fr",
@@ -23,18 +26,26 @@ function App() {
     "Footer"
     `,
   };
+
   return (
     <>
       <SideSelection
         openDrawer={openDrawer}
         setOpenDrawer={setOpenDrawer}
       ></SideSelection>
+      {loginMode && (
+        <UserModalLogin
+          loginMode={loginMode}
+          setLoginMode={setLoginMode}
+        ></UserModalLogin>
+      )}
       <Grid container sx={gridOuterContainer}>
         {/* main section */}
         <Grid item sx={{ gridArea: "Header" }}>
           <NavBar
             openDrawer={openDrawer}
             setOpenDrawer={setOpenDrawer}
+            setLoginMode={setLoginMode}
           ></NavBar>
         </Grid>
         <Grid
