@@ -24,7 +24,6 @@ const userSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(checkLogin.fulfilled, (state, action) => {
-      console.log(action.payload.user);
       if (action.payload.user !== null) {
         const name = action.payload.user.name;
         const link = action.payload.redirectLink;
@@ -49,11 +48,10 @@ export const checkLogin = createAsyncThunk(
   "user/checkLogin",
   // function has empty argument parameter
   async () => {
-    const url = "http://127.0.0.1:3001/auth/profile";
-    const user = await fetch(url, { credentials: "include" }).then((response) =>
-      response.json()
-    );
-    console.log(user);
+    const url = "http://localhost:3001/auth/profile";
+    const user = await fetch(url, {
+      credentials: "include",
+    }).then((response) => response.json());
     return user;
   }
 );

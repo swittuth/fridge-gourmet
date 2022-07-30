@@ -13,6 +13,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.1",
     "cookie-parser": "^1.4.6",
+    "express-session": "^1.17.3",
     "passport": "^0.5.3",
     "react": "^18.2.0",
     "react-awesome-slider": "^4.1.0",

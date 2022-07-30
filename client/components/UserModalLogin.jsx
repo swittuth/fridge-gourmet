@@ -28,14 +28,13 @@ export function UserModalLogin(prop) {
         sx={{
           height: "60%",
           width: "60%",
-          backgroundColor: "white",
+          backgroundColor: "primary.main",
           borderRadius: "10px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
           alignItems: "center",
           paddingTop: "10px",
-          backgroundColor: "primary.main",
         }}
       >
         <Box
@@ -242,9 +241,9 @@ export function UserModalLogin(prop) {
                 >
                   REGISTER ACCOUNT
                 </Button>
-                <a
+                <form
                   className="google-auth-button"
-                  href="http://localhost:3001/auth/google"
+                  action="http://localhost:3001/auth/google"
                 >
                   <Button
                     variant="contained"
@@ -256,10 +255,11 @@ export function UserModalLogin(prop) {
                         backgroundColor: "#ff1744",
                       },
                     }}
+                    type="submit"
                   >
                     <GoogleIcon></GoogleIcon>
                   </Button>
-                </a>
+                </form>
                 <Typography
                   sx={{
                     textAlign: "center",

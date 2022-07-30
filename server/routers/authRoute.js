@@ -11,12 +11,12 @@ authRouter.get("/profile", (req, res) => {
   console.log(req.user);
   if (req.user) {
     res.send({
-      redirectLink: "http://127.0.0.1:5173/",
+      redirectLink: "http://127.0.0.1:5173",
       user: req.user,
     });
   } else {
     res.send({
-      redirectLink: "http://127.0.0.1:5173/",
+      redirectLink: "http://127.0.0.1:5173",
       user: null,
     });
   }
@@ -33,10 +33,10 @@ authRouter.get(
   "/google/redirect",
   passport.authenticate("google"),
   (req, res) => {
-    console.log(req.user);
     // in this step google send back the info with a code that can then be used
     // by the application to pull data from the user on google
-    res.redirect("http://127.0.0.1:5173/"); // go back to the home page
+    console.log(req.user);
+    res.redirect("http://127.0.0.1:5173"); // go back to the home page
   }
 );
 module.exports = authRouter;

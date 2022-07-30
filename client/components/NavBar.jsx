@@ -31,7 +31,7 @@ export function NavBar(prop) {
     if (userInfo.loggedIn) {
       prop.setLoginMode(false);
     }
-  }, [userInfo]);
+  });
 
   return (
     <>
