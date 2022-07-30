@@ -31,3 +31,6 @@ Fridge Gourmet is a mobile responsive web application aimed to help college stud
 
 #### Selecting Ingredients & Filtering Recipes
 ![Demo of Fridge Gourmet](https://github.com/swittuth/fridge-gourmet/blob/main/fridge_gourmet_demo.gif)
+
+#### Viewing Selected Recipe
+![Demo of Selected Recipe](https://github.com/swittuth/fridge-gourmet/blob/main/fridge_gourmet_demo2.gif)
