@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Box, Grid, Typography, Chip } from "@mui/material";
 import { removeSearchIngredient } from "../redux/reducers/recipeSlice";
 import { RecipeDisplay } from "./RecipeDisplay";
+import { Navigate } from "react-router-dom";
 
-export function MainDisplay() {
+export function MainDisplay(prop) {
   const mealState = useSelector((state) => state.meals);
   const selectedIngredients = mealState.selectedIngredients;
   const [chipIngredients, setChipIngredients] = useState([]);
@@ -47,31 +48,35 @@ export function MainDisplay() {
 
   // to update the user information
 
-  return (
-    <Grid container sx={mainDisplayStyle}>
-      <Grid
-        item
-        sx={{
-          gridArea: "Ingredients",
-          display: "flex",
-          alignItems: "center",
-          width: "100%",
-          padding: "10px",
-          gap: "5px",
-        }}
-      >
-        {chipIngredients}
+  if (prop.pages.profilePage) {
+    return <Navigate to="/profile" />;
+  } else {
+    return (
+      <Grid container sx={mainDisplayStyle}>
+        <Grid
+          item
+          sx={{
+            gridArea: "Ingredients",
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            padding: "10px",
+            gap: "5px",
+          }}
+        >
+          {chipIngredients}
+        </Grid>
+        <Grid
+          item
+          sx={{
+            width: "100%",
+            height: "100%",
+            gridArea: "RecipeDisplay",
+          }}
+        >
+          <RecipeDisplay></RecipeDisplay>
+        </Grid>
       </Grid>
-      <Grid
-        item
-        sx={{
-          width: "100%",
-          height: "100%",
-          gridArea: "RecipeDisplay",
-        }}
-      >
-        <RecipeDisplay></RecipeDisplay>
-      </Grid>
-    </Grid>
-  );
+    );
+  }
 }

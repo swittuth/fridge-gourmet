@@ -4,19 +4,18 @@ const passport = require("passport");
 
 authRouter.get("/logout", (req, res) => {
   req.logout();
-  res.send("logged out successfully");
+  res.redirect("http://localhost:5173");
 });
 
 authRouter.get("/profile", (req, res) => {
-  console.log(req.user);
   if (req.user) {
     res.send({
-      redirectLink: "http://127.0.0.1:5173",
+      redirectLink: "http://localhost:5173",
       user: req.user,
     });
   } else {
     res.send({
-      redirectLink: "http://127.0.0.1:5173",
+      redirectLink: "http://localhost:5173",
       user: null,
     });
   }
@@ -35,8 +34,7 @@ authRouter.get(
   (req, res) => {
     // in this step google send back the info with a code that can then be used
     // by the application to pull data from the user on google
-    console.log(req.user);
-    res.redirect("http://127.0.0.1:5173"); // go back to the home page
+    res.redirect("http://localhost:5173"); // go back to the home page
   }
 );
 module.exports = authRouter;

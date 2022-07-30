@@ -1,16 +1,22 @@
 import { useState } from "react";
 import { Grid, Drawer, Typography } from "@mui/material";
-import { BrowserRouter, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { MainDisplay } from "./components/MainDisplay.jsx";
 import { SideSelection } from "./components/SideSelection.jsx";
 import { UserModalLogin } from "./components/UserModalLogin.jsx";
+import { UserProfile } from "./components/UserProfile.jsx";
 import "./App.scss";
 
 function App() {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [loginMode, setLoginMode] = useState(false);
+  const [profilePage, setProfilePage] = useState(false);
+
+  const pages = {
+    profilePage,
+  };
 
   const gridOuterContainer = {
     display: "grid",
@@ -46,6 +52,7 @@ function App() {
             openDrawer={openDrawer}
             setOpenDrawer={setOpenDrawer}
             setLoginMode={setLoginMode}
+            setProfilePage={setProfilePage}
           ></NavBar>
         </Grid>
         <Grid
@@ -56,7 +63,12 @@ function App() {
             height: "100%",
           }}
         >
-          <MainDisplay></MainDisplay>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<MainDisplay pages={pages} />} />
+              <Route path="/profile" element={<UserProfile pages={pages} />} />
+            </Routes>
+          </BrowserRouter>
         </Grid>
         <Grid item sx={{ gridArea: "Footer" }}>
           <Footer></Footer>

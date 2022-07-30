@@ -139,19 +139,25 @@ export function UserModalLogin(prop) {
                 >
                   SUBMIT
                 </Button>
-                <Button
-                  variant="contained"
-                  sx={{
-                    width: "90%",
-                    backgroundColor: "#d32f2f",
-                    color: "white",
-                    "&:hover": {
-                      backgroundColor: "#ff1744",
-                    },
-                  }}
+                <form
+                  className="google-auth-button"
+                  action="http://localhost:3001/auth/google"
                 >
-                  <GoogleIcon></GoogleIcon>
-                </Button>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      width: "100%",
+                      backgroundColor: "#d32f2f",
+                      color: "white",
+                      "&:hover": {
+                        backgroundColor: "#ff1744",
+                      },
+                    }}
+                    type="submit"
+                  >
+                    <GoogleIcon></GoogleIcon>
+                  </Button>
+                </form>
                 <Typography
                   sx={{
                     textAlign: "center",

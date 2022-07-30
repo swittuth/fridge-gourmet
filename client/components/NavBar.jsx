@@ -1,14 +1,7 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
 import logo from "../assets/fridge_gourmet_logo.svg";
-import {
-  AppBar,
-  Typography,
-  Stack,
-  Toolbar,
-  Button,
-  IconButton,
-} from "@mui/material";
+import { Navigate } from "react-router-dom";
+import { AppBar, Stack, Toolbar, Button, IconButton } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { checkLogin } from "../redux/reducers/userSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,12 +15,13 @@ export function NavBar(prop) {
     dispatch(checkLogin());
     if (!userInfo.loggedIn) {
       prop.setLoginMode(true);
+    } else {
+      prop.setProfilePage(true);
     }
   }
 
   useEffect(() => {
     dispatch(checkLogin());
-    console.log(userInfo);
     if (userInfo.loggedIn) {
       prop.setLoginMode(false);
     }
@@ -58,6 +52,9 @@ export function NavBar(prop) {
               sx={{
                 color: "primary.dark",
               }}
+              onClick={() => {
+                prop.setProfilePage(false);
+              }}
             >
               HOME
             </Button>
@@ -65,18 +62,21 @@ export function NavBar(prop) {
               <AccountCircleIcon></AccountCircleIcon>
             </IconButton>
             {userInfo.loggedIn && (
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#d50000",
-                  color: "white",
-                  "&:hover": {
-                    backgroundColor: "#ff1744",
-                  },
-                }}
-              >
-                LOGOUT
-              </Button>
+              <form action="http://localhost:3001/auth/logout">
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#d50000",
+                    color: "white",
+                    "&:hover": {
+                      backgroundColor: "#ff1744",
+                    },
+                  }}
+                  type="submit"
+                >
+                  LOGOUT
+                </Button>
+              </form>
             )}
           </Stack>
         </Toolbar>
