@@ -49,7 +49,7 @@ export const checkLogin = createAsyncThunk(
   "user/checkLogin",
   // function has empty argument parameter
   async () => {
-    const url = "http://localhost:3001/auth/profile";
+    const url = "http://127.0.0.1:3001/auth/profile";
     const user = await fetch(url, { credentials: "include" }).then((response) =>
       response.json()
     );
