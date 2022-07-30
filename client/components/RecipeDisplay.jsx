@@ -25,6 +25,7 @@ export function RecipeDisplay() {
     } else if (mealState.status === "succeeded") {
       // register into the recipe array for display
       const tempRecipeContainer = [];
+      let delay = 0; // delay for animation
       for (let meal of mealState.meals) {
         tempRecipeContainer.push(
           <Grid item>
@@ -32,10 +33,12 @@ export function RecipeDisplay() {
               details={{
                 ...meal,
               }}
+              delayTime={delay}
               setOpenModal={setOpenModal}
             />
           </Grid>
         );
+        delay += 0.1;
       }
       setRecipeArray(tempRecipeContainer);
     }

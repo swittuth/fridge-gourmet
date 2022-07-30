@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { updateMealInfo } from "../redux/reducers/modalSlice";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 
 export function RecipeContainer(props) {
   const dispatch = useDispatch();
@@ -17,39 +18,53 @@ export function RecipeContainer(props) {
   }
 
   return (
-    <Card
-      variant="outlined"
-      sx={{
-        margin: "10px",
-        borderRadius: "20px",
+    <motion.div
+      className="recipe-card"
+      animate={{
+        opacity: 1,
+      }}
+      initial={{
+        opacity: 0,
+      }}
+      transition={{
+        duration: 1,
+        delay: props.delayTime,
       }}
     >
-      <CardHeader
-        title={props.details.name}
-        subheader={`${props.details.category} | ${props.details.area}`}
-        titleTypographyProps={{ variant: "h6", fontSize: "1em" }}
-      />
-      <CardMedia component="img" image={props.details.image} />
-      <CardContent
+      <Card
+        variant="outlined"
         sx={{
-          display: "flex",
-          justifyContent: "center",
+          margin: "10px",
+          borderRadius: "20px",
         }}
       >
-        <Button
-          variant="outlined"
+        <CardHeader
+          title={props.details.name}
+          subheader={`${props.details.category} | ${props.details.area}`}
+          titleTypographyProps={{ variant: "h6", fontSize: "1em" }}
+        />
+        <CardMedia component="img" image={props.details.image} />
+        <CardContent
           sx={{
-            color: "primary.dark",
-          }}
-          onClick={() => {
-            // update the modal information
-            updateModalInfo();
-            props.setOpenModal(true);
+            display: "flex",
+            justifyContent: "center",
           }}
         >
-          MORE INFO
-        </Button>
-      </CardContent>
-    </Card>
+          <Button
+            variant="outlined"
+            sx={{
+              color: "primary.dark",
+            }}
+            onClick={() => {
+              // update the modal information
+              updateModalInfo();
+              props.setOpenModal(true);
+            }}
+          >
+            MORE INFO
+          </Button>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 }
