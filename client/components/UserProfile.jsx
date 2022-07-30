@@ -1,7 +1,8 @@
 import React from "react";
-import { Typography, Grid, Paper, Box } from "@mui/material";
+import { Typography, Grid, Paper, Box, Avatar } from "@mui/material";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { ProfileCard } from "./UserProfilePageCards/ProfileCard";
 
 export function UserProfile(prop) {
   const gridLayout = {
@@ -20,15 +21,7 @@ export function UserProfile(prop) {
     return (
       <Grid container sx={gridLayout}>
         <Grid item sx={{ gridArea: "Profile" }}>
-          <Paper
-            elevation={5}
-            sx={{
-              height: "100%",
-              width: "100%",
-            }}
-          >
-            Profile Section
-          </Paper>
+          <ProfileCard />
         </Grid>
         <Grid item sx={{ gridArea: "Information" }}>
           <Paper
