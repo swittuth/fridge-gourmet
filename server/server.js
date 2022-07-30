@@ -13,7 +13,6 @@ app.use(
 );
 const passportSetup = require("./services/passport_setup");
 const cookieSession = require("cookie-session");
-const cookieParser = require("cookie-parser");
 
 const PORT = 3001;
 
@@ -24,7 +23,6 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(cookieParser());
 
 // initialize passport
 app.use(passport.initialize());
