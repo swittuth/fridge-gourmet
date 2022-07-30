@@ -18,14 +18,20 @@ export function NavBar(prop) {
   // indicate whether the user is logged in - and retrieve user information
   const userInfo = useSelector((state) => state.user);
 
-  async function verifyLogin() {
-    await dispatch(checkLogin());
+  function verifyLogin() {
+    dispatch(checkLogin());
     if (!userInfo.loggedIn) {
       prop.setLoginMode(true);
     }
   }
 
-  useEffect(() => {}, [userInfo]);
+  useEffect(() => {
+    dispatch(checkLogin());
+    console.log(userInfo);
+    if (userInfo.loggedIn) {
+      prop.setLoginMode(false);
+    }
+  }, [userInfo]);
 
   return (
     <>
@@ -58,6 +64,20 @@ export function NavBar(prop) {
             <IconButton onClick={verifyLogin}>
               <AccountCircleIcon></AccountCircleIcon>
             </IconButton>
+            {userInfo.loggedIn && (
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "#d50000",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "#ff1744",
+                  },
+                }}
+              >
+                LOGOUT
+              </Button>
+            )}
           </Stack>
         </Toolbar>
       </AppBar>

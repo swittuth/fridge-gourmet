@@ -13,7 +13,7 @@ import { useState } from "react";
 
 // should show login / register when the user is not logged in yet
 export function UserModalLogin(prop) {
-  const [loginMode, setLoginMode] = useState(false);
+  const [loginMode, setLoginMode] = useState(true);
 
   return (
     <Modal
