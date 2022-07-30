@@ -12,7 +12,7 @@ import "./App.scss";
 function App() {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [loginMode, setLoginMode] = useState(false);
-  const [profilePage, setProfilePage] = useState(true); // default is false
+  const [profilePage, setProfilePage] = useState(false); // default is false
 
   const pages = {
     profilePage,
