@@ -25,7 +25,7 @@
 * CORs
 
 ## General Information
-Fridge Gourmet is a mobile responsive web application aimed to help college students learn new recipes and avoid wasting money on takeouts and going to restaurants. The user simply select ingredients that they have available in their fridge and the application will produce recipes that can be made with the given ingredients. The application was inspired from my own experience during my time in college and didn't know how to cook. 
+Fridge Gourmet is a mobile responsive web application aimed to help college students learn new recipes and avoid wasting money on takeouts and going to restaurants. The user simply selects ingredients that they have available in their fridge and the application will produce recipes that can be made with the given ingredients. The application was inspired from my own experience during my time in college and didn't know how to cook. 
 
 ## Demo
 
