@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Grid, Drawer, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar.jsx";
 import { Footer } from "./components/Footer.jsx";
